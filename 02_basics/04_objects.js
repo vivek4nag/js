@@ -68,7 +68,6 @@ const course = {
 // ab suppose hume courseInstructor ko baar baar use krna hai to we can destructure it using following syntax - 
 const {courseInstructor : instructor} = course // course object se courseinstructir ko deconstruct kr do instructor naam se
 console.log(instructor); // now we can simply call instructor
-
 //we will use above deconstruct wala thing in react n stuff
 
 
