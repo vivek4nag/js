@@ -65,5 +65,3 @@ console.log(JsUser.greetingTwo());
 
 
 
-
-
