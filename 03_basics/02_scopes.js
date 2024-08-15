@@ -54,16 +54,22 @@ if(true){
 
 //  ++++++++++++++++++++++++++++ interesting ++++++++++++++++++++++
 
+//Hoisting is a fundamental concept in JavaScript that affects how variables, functions, and classes are declared and initialized. It refers to the process by which the JavaScript interpreter "hoists" or moves declarations to the top of their respective scopes (global or function scope) before the code is executed. However, only the declarations are hoisted, not the initializations or assignments.
+
+//calling function before declaration will work
+addone(5)
 function addone(num){ // ye ek simple function hai 
     return num + 1
 }
-addone(5)
+
 
 //niche wale ko kabhi kabhi expression bulate hai.. it is like variable. in JS variable can hold anything
+//but bcz niche wale me return value is being stored in a variable & variable is not yet being initialized it will give error  -->Cannot access 'addTwo' before initialization
+addTwo(5)
 const addTwo = function(num){
     return num + 2
 }
-addTwo(5)
+
 
 
 
