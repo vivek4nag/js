@@ -7,7 +7,7 @@ if(true){
 
 // console.log(a); // it will not print bcz let ka scope is within that { } only
 //console.log(b);  //same b ka bhi scope utna hi hai
-console.log(c); // ye print ho jayga
+console.log(c); // ye print ho jayga 
 
 //now block scope & global scope
 
