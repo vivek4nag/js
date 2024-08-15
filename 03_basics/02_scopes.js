@@ -9,7 +9,7 @@ if(true){
 //console.log(b);  //same b ka bhi scope utna hi hai
 console.log(c); // ye print ho jayga 
 
-//now block scope & global scope
+//now block scope & global scope 
 
 let x = 300 // yahn x is in global scope
 if (true){
