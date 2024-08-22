@@ -9,8 +9,8 @@ let age = 21
 let isLoggedIn = false 
 let state = null // it represents empty value 
 let state1; // undefined
+//integer ==> range till 2 to power 52
 
-//ineger ==> range till 2 to power 52
 //bigint
 //string => defined in double "" or single quotes ' '
 // boolean ==> true or false
