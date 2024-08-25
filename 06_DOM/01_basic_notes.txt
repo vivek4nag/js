@@ -1,0 +1,11 @@
+Document Object Model (DOM) ->
+It is a programming interface that represents the structure of an HTML or XML document as a tree of objects. 
+Each node in this tree corresponds to a part of the document (such as an element, attribute, or text) and can be manipulated using JavaScript to dynamically change the content, structure, and style of a webpage.
+
+webpage ke inspect elemnt pe jaakr console.log(documnent) type krenge to document object ki bht saari properties aajaygi
+kuch imp as sir said =>
+console.log(documnet.baseURI)
+
+console.log(documnet.links) = html collection ki roop me saari links mil jaygi. but remember during dom manipulation ki galti nhi krna.. ye array format me nhi aay ahai. html collection hai
+
+
