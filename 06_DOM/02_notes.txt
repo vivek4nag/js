@@ -1,0 +1,7 @@
+in 2nd html file we made a simple html file with parent class & having multiple child class inside it
+
+we started writing scripting just after body tag. we can do this in separate file also or in same file
+
+we are simply using query selector to find the elements with parent class
+
+refer to two & three html files to seecommented notes

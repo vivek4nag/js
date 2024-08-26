@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+</body>
+
+<!-- ye scripting body ke just baad bhi kar skte ho ya alag file me  -->
+<script>
+    // using query selector to find parent class ki elements & storing it in a parent variable
+    const parent = document.querySelector('.parent')
+    console.log(parent);
+    //using dot operator finding children this will give HTMLcollection of all children as output
+    console.log(parent.children);
+
+    //collection is array like.. so we can access element like-
+    console.log(parent.children[1]); //op <div class="day">Tuesday</div>
+
+    console.log(parent.children[1].innerHTML); // Tuesday
+
+    //we can run simple for loop on children collection
+    for (let i = 0; i < parent.children.length; i++) {
+        console.log(parent.children[i].innerHTML); // simple monday tuesday.... print ho jayga
+    }
+
+    //we can also apply styling
+    parent.children[1].style.color = "orange"
+
+    //we can directly get first or last elment child ==>
+    console.log(parent.firstElementChild ); // monday wala pura div print ho jayga
+    console.log(parent.lastElementChild); // jo bhi last child hoga wo pura print
+
+    //upar humne parent se child ko target kiya.. we can also target parent from child
+    const dayOne = document.querySelector('.day')
+    console.log(dayOne); // monday wala pura div print hoga
+    //since we got first child. we can parent directly
+    console.log(dayOne.parentElement); // pura parent div print ho jayga w children in it
+
+    //we can also go to next sibling from the child we are ri8 now
+    console.log(dayOne.nextElementSibling); // tuesday wla pura div print hoga
+
+    // A nodelist is a collection of document nodes which includes text nodes , attribute nodes and element nodes. A line break is also counted in nodelist but only first one. All subsequent line breaks are ignored by browser
+    console.log("NODES: ", parent.childNodes); // NodeList(9) [text, div.day, text, div.day, text, div.day, text, div.day, text] == > 9 nodelist hai bcz browser even simple ek line break ko bhi ek node maan leta hai 
+    
+    
+    
+    
+    
+    
+    
+    
+</script>
+</html>
