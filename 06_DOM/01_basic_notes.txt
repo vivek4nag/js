@@ -9,3 +9,107 @@ console.log(documnet.baseURI)
 console.log(documnet.links) = html collection ki roop me saari links mil jaygi. but remember during dom manipulation ki galti nhi krna.. ye array format me nhi aay ahai. html collection hai
 
 
+now to manipulate /change object ==>
+open any page ===> go to terminal on browser ==> document.getElementById('id name jo search krna chahte hai  ') ===> this will give that tag jisme humara searched id hai 
+    We can furthuer search eg == > document.getElementById('title').className
+o/p ==> 'heading'
+
+simillarly document.getElementById('title').getAttribute('id') ==> getAttribute function me jo attribute pass krenge uska value aajayga ==> id attribue ka value title hai 
+
+document.getElementById('title').getAttribute('class') ==> op heading
+
+
+also we can set attribute ==> document.getElementById('title').setAttribute('class', 'test') ==> getElementById se hume title id wala element milega jo ki humare eg me heading hai & then setAttribute se class attribute ko overwrite krke test set krenge
+
+
+we can also store the value inside a variable to get easy access =>
+    const title =  document.getElementById('title') 
+this will store value in title variable. if we search title on console niche wala op aayga
+<h1 id="title" class="heading">DOM learning ekdum jhakkkkas</h1>
+
+since that h1 element is object stored in title variale , we can manipulate is ==>
+title.style.backgroundColor = 'green' == > this will change bg color to green 
+simillarly => title.style.padding = '20px' => add 20px ka padding
+
+
+ab how to add & manipulate content =>
+ title.textContent ==> op will be the ontent inside that tag. here op DOM learning ekdum jhakkkkas
+title.innerHTML ==> ye bhi same output
+title.innerText ==> ye bhi same output
+
+BUT there is difference if we hide certain part of text then ==
+title.innerText ==> op 'DOM learning ekdum jhakkkkas'
+
+title.textContent == > op DOM learning ekdum jhakkkkas test text (note that test text which we made display none using CSS is also visible)
+
+title.innerHTML ==> op DOM learning ekdum jhakkkkas <span style="display: none;">test text</span> (note that andar ka jo bhi extra html tag humne add kiya tha wo sab dikha rha)
+
+
+moving ahead some other syntaxes ====>
+querySelector = it will give only the 1st instance of the tag searched
+
+document.querySelector('h2') = this will only give the 1st h2 used in page 
+
+queryselector me hum css jaise likhte hai waise hi use krte like for id #, or class use .(dot)
+
+simillarly document.querySelector('#title') == > note id select krne ke liye we use #name of id ==> op <h1 id="title" class="heading">
+            DOM learning ekdum jhakkkkas <span style="display: none;">test text</span>
+        </h1>
+
+document.querySelector('.heading') ==> (like css class name being sent by . )
+same op aayga like above
+
+document.querySelector('input[type="password"]') == > password wala tag aajayga op
+
+suppose we want to change the color of 1st list element in unordered list
+const myul =  document.querySelector('ul') == > pehle ul ko ek variableme store kr liya
+
+const turnGreen = myul.querySelector('li') // since queryselectorwill give only 1st li item so we are storing that in variable turngren
+
+turnGreen.style.backgroundColor= "green" // now we can change anything on 1st list item using style
+
+if we want to change the text content inside this 1st list element ==>
+turnGreen.innerText ==> jo bhi contenet hoga op aayga
+turnGreen.innerText = "five" ==> this will update the content
+
+
+now querySelectorAll ==>
+
+1. document.querySelectorAll('li') == > this will give a nodelist of all the list items   inside the ul we made = op- NodeList(3) [li, li, li]. & it will have multiple properties. this nodelist is not pure array e.g. we don't have access to feature like map which is availble for array
+
+2. lets store this nodelist inside a variale ==> const tempLiList = document.querySelectorAll('li')
+
+3. array jaisa ek feature of nodelist =>
+tempLiList[0].style.color = 'green' ==> list ka pehla item green ho jayga. note that like array we are using index number to signify which item we want to target
+
+same if we apply querySelectorAll on heading ==>
+const myH1 = document.querySelectorAll('h1') //  though ek hi heading hai, yet nodelist hi dega op me
+myH1[0].style.color = "green" // again note ki like array []use kr rhe hum to denote which heading we want to color green
+
+
+going abck to tempLiList ==> we can apply for each loop
+tempLiList.forEach(function (l) {
+    l.style.backgroundColor = "green"
+})
+inside foreach loop using arrow function & changing puri list ka background to green
+
+
+
+now getElementByClassname ==>
+
+document.getElementsByClassName('list-item') // it will return html collection
+op = HTMLCollection(4) [li.list-item, li.list-item, li.list-item, li.list-item]
+
+NOTE that aise html colection me for each naam ka koi cheez nhi hai.
+So to apply map ya for each we have to convert this collection to array ==>
+
+const tempClassList = document.getElementsByClassName('list-item')
+
+const myConvertedArray = Array.from(tempClassList)  ==> op [li.list-item, li.list-item, li.list-item, li.list-item]
+so it will give an array. & now we can apply alll array wala feature like foreach, map
+
+As shown below we can apply foreach on the array 
+myConvertedArray.forEach(function(li){
+    li.style.color = "red"
+})
+so the ul gave html collection when we got values by class name . to iterate over it we converted into array & applied foreach loop & then do whaterver you want.. we just colored red 
