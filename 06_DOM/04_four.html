@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM continued</title>
+</head>
+<body style="background: #212121; color: #fff;">
+    <ul class="language">
+        <li>javaScript</li>
+    </ul>
+</body>
+<!-- we have to add another list item. but we might switch language in future. so it is better to define a function of adding list  -->
+<script>
+    function addLanguage(langName){ //so we are making a function to add another list item
+        const li =  document.createElement('li'); //ek list element create kiya & use ek variable me store kr liya
+        li.innerHTML = `${langName}` // then use innerHTML se function ke andar pass ki gyi value add kr rhe
+        document.querySelector(".language").appendChild(li) //finally language class use krke ul ko select kiya & usme humari bnayi li ko as child append kr diya
+    }
+    //so humne pura function ko define kr diya & ab niche function me parameter pass krwayenge to wo add ho jayga
+    addLanguage("python")
+    addLanguage("C++")
+    addLanguage("typescript")
+    //but the problem is ki jab bhi append krna pdega to isko pura tree travel krke tab jaakr child ko append krna hoga which is inefficient. so jitni baar method chalega utni baar tree traverse karna pdega
+
+    //now a thoda optimised approach bcz neeche wale me hume pura tree traverse nhi karna pad rha.. we created a listnode & added our text there. also use this approach in interview & projects
+    function addOptiLanguage(langName){
+        const li = document.createElement('li');
+        // const addText = document.createTextNode(langName)
+        // li.appendChild(addText)
+        //above 2 line can be combined to ==>
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptiLanguage("helllo boss")
+
+    //now to edit these values
+    //pehle hume element select krna pdega
+    const secondLang =  document.querySelector("li:nth-child(2)") // like CSS syntax nth child
+    // secondLang.innerHTML ="new lang" // but ye optimisd nhi hai to use less
+    //so better we create a new li element below
+    const newli =  document.createElement('li')
+    newli.textContent = "naya lang" // element me text content daal diya
+    secondLang.replaceWith(newli) // & finally humne secondLnag wali element ko newli se replace kr diya
+
+    //another edit example
+    const firstLang = document.querySelector('li:first-child')
+    firstLang.outerHTML = '<li>react.js</li>' // outer html replace krna hai to pura html tag ke sath hume data daalna pdega
+
+
+    // ab remove krte hai 
+    const lastLang = document.querySelector("li:last-child") // again CSS jiasa syntax humne last wale ko select kiya(kisi ko bhi select kr skte hai )
+    lastLang.remove() // & simply remove kr diya
+
+</script>
+</html>

@@ -48,8 +48,8 @@
     //we can also go to next sibling from the child we are ri8 now
     console.log(dayOne.nextElementSibling); // tuesday wla pura div print hoga
 
-    // A nodelist is a collection of document nodes which includes text nodes , attribute nodes and element nodes. A line break is also counted in nodelist but only first one. All subsequent line breaks are ignored by browser
-    console.log("NODES: ", parent.childNodes); // NodeList(9) [text, div.day, text, div.day, text, div.day, text, div.day, text] == > 9 nodelist hai bcz browser even simple ek line break ko bhi ek node maan leta hai 
+    // A nodelist is a collection of document nodes which includes text nodes , attribute nodes and element nodes. A line break is also counted in nodelist but only first one. All subsequent line breaks are ignored by browser. similarly a comment is also counted as a node 
+    console.log("NODES: ", parent.childNodes); // op NodeList(9) [text, div.day, text, div.day, text, div.day, text, div.day, text] == > 9 nodelist hai bcz browser even simple ek line break ko bhi ek node maan leta hai 
     
     
     
