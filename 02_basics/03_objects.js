@@ -25,6 +25,11 @@ console.log(JsUser[mySym]); // accessing symbol key
 JsUser.email = "vivek@chatgpt.com"
 console.log(JsUser.email);
 
+/*to delete values ==>
+    delete JsUser.isLoggedIn;
+    console.log(JsUser);
+*/
+
 /*
 if u want ki koi value kabhi change naa ho to use freeze.it becomes immutable, you can no longer add, remove, or modify its properties
 Object.freeze(JsUser)

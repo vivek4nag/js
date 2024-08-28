@@ -72,6 +72,42 @@ console.log(instructor); // now we can simply call instructor
 
 
 
+// 2 important built in object = JSON & LocalStorage
+
+//  *************************JSON (supersimpleDev)*****************
+
+// JSON - javascript object notation ==>  is a lightweight data interchange format that is easy for humans to read and write, and easy for machines to parse and generate. JSON is primarily used to transmit data between a server and a web application, as an alternative to XML.
+
+const product2 = {
+    name : 'shirt',
+    'delivery-time': '1 day',
+    rating:{
+        stars : 4.5,
+        count: 87
+    },
+    fun: function function1(){
+        console.log("function inside object");   
+    }
+}
+
+// in JSON all properties & values must use double cquote. JSON does not support function
+//below syntax stringify cobnvert JS to JSON 
+console.log(JSON.stringify(product2)) 
+// op {"name":"shirt","delivery-time":"1 day","rating":{"stars":4.5,"count":87}} note that sab string me hai in double quote & the function inside the object is not present
+console.log(typeof JSON.stringify(product2))  // op string
+
+//now convert JSON to JS object ==> we will use JSON.parse() method
+const jsonString = JSON.stringify(product2)
+console.log(JSON.parse(jsonString)); // will give back the JS object
+
+
+//*****************localStorage **********************//
+//left for now
+
+
+
+
+
 
 
 

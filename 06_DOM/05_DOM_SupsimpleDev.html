@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <button>hello</button>
+    <button class="js-button">Second button</button>
+</body>
+
+<script>
+    // document webject represents/models the webpage
+
+    //we can change title
+    console.log(document.title); 
+    document.title = "changed "
+
+    //.body will simply copy the whole body html element into JS
+    console.log(document.body);
+    //when htm element is inside JS it is converted into object eg==
+    console.log(typeof document.body); // op object
+
+    console.log(document.body.innerHTML); // will print all the html element inside body tag
+
+    // document.querySelector() = let us get any element from the page & put it in JS
+    console.log(document.querySelector('button')); // op <button>hello</button> ==> hencce that button element will be brought inside JS
+
+    // selecting the button & then viewing the inner writtten thing
+    console.log(document.querySelector('button').innerHTML); //op hello
+
+    //to change the innerHTMl ==>
+    document.querySelector('button').innerHTML = "changed" 
+
+    // we can also get using query selector & using class name inside it. this class selector is as same as CSS
+    document.querySelector('.js-button')
+     
+    
+    
+    
+    
+</script>
+</html>
