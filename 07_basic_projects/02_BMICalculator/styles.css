@@ -1,9 +1,13 @@
 
 .container {
-    width: 575px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #797978;
+    /* width: 575px;
     height: 825px;
-    background-color: #797978;
-    padding-left: 30px;
+    padding-left: 30px; */
   }
   #height,
   #weight {
