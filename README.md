@@ -10,3 +10,6 @@ Hey, I'm currently learning JavaScript, and it's been really exciting! I'm explo
 
 # 2. Basic BMI calculator
 [click here](https://vivek4nag.github.io/js/07_basic_projects/02_BMICalculator/)
+
+# 3. A digital Clock
+[click here](https://vivek4nag.github.io/js/07_basic_projects/03_DigitalClock/)
