@@ -1,0 +1,22 @@
+events are actions or occurrences that happen in the browser, such as clicking a button, loading a page, hovering over an element, or pressing a key on the keyboard. Events are essential for making web pages interactive, and JavaScript allows you to handle these events and define the behavior of the webpage in response.
+
+jo imp pdhna hai==>
+    1. timestamp,  
+    2. type - keyboard type, 
+    3. defaultPrevented - form me use krenge ki jab submit cick kre to default submit na ho jaaye-also we can stop anchor tag to stop navigation on click
+    4. target
+    5. toElement
+    6. srcElement
+    7. currentTarget
+    8. clintX, clintY, screenX, screenY, tiltX, tiltY ==> basically saare position related
+    9. altkey, ctrlkey, shiftkey, keyCode
+
+
+Event Propagation ==>
+Event propagation refers to the way events are propagated (bubbled or captured) through the DOM. Wecan control the propagation phase by providing a third argument (true for capturing, false for bubbling) in addEventListener.
+    1. Event Bubbling: The event starts from the target element and bubbles up to the parent elements. This is the default behavior.
+    2. Event Capturing: The event starts from the outermost element and propagates down to the target element.
+
+example iska see code
+
+    

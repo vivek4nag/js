@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body style= "background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    //we can simply use event in the corrosponding html element but not advisable
+    // we can use onclick event but usme features kuch kam hai 
+    // document.getElementById('owl').onclick = function (){
+    //     alert("owl clicked")
+    // }
+    //another method is attachEvent = but bht pehle ki baat hai
+    //jQuery bhi ue hoti thi -onEventistner = but not now
+
+    //better use addeventlistener. jo event ko dekhna hai use that inside ''
+    //ek 3rd parameter default false hai to we ignore , but kbhi kbhi we have to use it
+    /*
+    document.getElementById('owl').addEventListener('click', function(){
+        alert("owl clicked again")
+    }, false)
+    */
+
+
+    
+    //function(e) ==> we get a event object ==> see on browser terminal-- bht saare events dikhenge iske andar
+    document.getElementById('prayer').addEventListener('click', function(e){
+        console.log(e);
+    }, false)
+
+    // jo imp pdhna hai==> see txt notes
+
+    //Event propagation == see txt notes
+    // event propagataion ka eg ==>
+    //      default false hota hai mmeans bubbling== andar se bahar --> so owl pe click krenge to pehle 'owl clicked' print hoga & then "clicked inside ul" bcz owl wala list item ek unordered list ke andar hai & bubbling me andar se bahar jaata hai so pehle owl id wala execute hoga & then images id wala
+    //      but agr hum propagation true kar de dono ka to event capturing hoga --> then owl pe click krne pr bhi pehle uska parent element ka maal execute hoga i.e. pehle images id wala op aayga "clicked inside url" & then uske baad andar owl wala execute hoga 'owl clicked'
+    document.getElementById('images').addEventListener('click', function(e){
+        console.log("clicked inside the ul");  
+    }, false)
+
+    document.getElementById('owl').addEventListener('click', function(e){
+        console.log("owl clicked");  
+        e.stopPropagation() // is se bubble propagate hokkr upar nhi jaayga means ki bss yehi print hoga & parent ke pas koi code ho to execute nhi hoga
+    }, false)
+
+    document.getElementById('google').addEventListener('click', function(e){
+        console.log("google clicked");
+        e.stopPropagation() // warna clicked inside ul bhi print ho jaayga.. so to stop bubbling
+        e.preventDefault() // this will stop google from loading
+    }, false)
+    
+
+    //suppose we want to remove the image we clicked 
+    document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.target.parentNode);
+        
+        //let removeIt =  e.target.parentNode ;// target se hume us element ka pura HTML tag humare paas aajayga.. yahn target image hai to img tag ke sath pura aajayga. parentNode se hume us image ka parent elemnt jo ki <li> hai wo aajayga .. bcz hume pura ek ek li item hi remove krna hai  
+        // ab 2 tarike se remove kr skte
+        //note ki owl wala remove nhi hoga bcz uspe humne upar alag operation kr rkhe wo execute hoga ..wo owl clicked wala event propagation example
+        //removeIt.remove() // eeasy simple tarika
+
+        //dusra tough tarika
+        //removeIt.parentNode.removeChild(removeIt) // removeIt me list item hai to uske parent means ul me gye & then woha bola ki child ko remoe kr do & konsa child?? --> jo child removeIt me click ho rkhe hai
+
+        /*
+        but upar wale parentNode wale tarike me dikkat aaygi jab hum google wale item ko click krenge bcz google simple <li> item hai & uska parent <ul> hai so pura page hi gayab ho jaayga. hence we will get our target by tagName & will check ki konsa img hai to sirf use uda do
+        */
+
+        console.log(e.target.tagName);
+        if(e.target.tagName === 'IMG'){
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+        }
+
+    }, false)
+
+</script>
+</html>
