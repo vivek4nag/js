@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API request</title>
+</head>
+<body style="background-color: #414141; color: azure;">
+    <div style="background-color: aqua;">
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">XMLHttpRequest</a> <br>
+        <a href="https://developer.mozilla.org/en-US/docs/Glossary/AJAX">Ajax Programming</a> <br> <br>
+        <a href="https://api.github.com/users/vivek4nag">My github JSON</a>
+    </div>
+    <div>
+        <p>
+            XML stands for eXtensible Markup Language.
+            XML was designed to store and transport data. <br>
+        </p>
+        <p>
+            What is AJAX?
+            AJAX = Asynchronous JavaScript And XML. <br>
+            AJAX is not a programming language. <br>
+            AJAX just uses a combination of: <br>
+            A browser built-in XMLHttpRequest object (to request data from a web server) <br>
+            JavaScript and HTML DOM (to display or use the data)
+        </p>
+    </div>
+    <div>
+        XML ready state ==> <br>
+        0	UNSENT means Client has been created. open() not called yet. <br>
+        1	OPENED means	open() has been called. <br>
+        2	HEADERS_RECEIVED means	send() has been called, and headers and status are available. <br>
+        3	LOADING means	Downloading; responseText holds partial data. <br>
+        4	DONE means	The operation is complete. <br>
+    </div>
+</body>
+<script>
+    // XML ajax request ke baare me bss knowledge chayhe thodi.. xyda kaam nhi aayga
+    // XMLHttpRequest() ==> this object can be used to request data from a web server.
+    const requestURL = 'https://api.github.com/users/vivek4nag'
+    const xhr =  new XMLHttpRequest();
+    xhr.open('GET', requestURL)
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState);
+        if(xhr.readyState ===4){
+            const data = JSON.parse(this.responseText) // string data recieve hua hai usko JSON me convert kr rhe
+            console.log( typeof data);
+            
+            console.log(data.followers);
+            
+        }   
+    }
+    xhr.send()
+
+</script>
+</html>
