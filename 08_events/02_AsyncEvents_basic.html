@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Event</title>
+</head>
+<body>
+    <h1>This is H1</h1>
+    <h2>This is H2</h2>
+    <button id="stop">stop</button>
+</body>
+<script>
+    // used to execute a function or a piece of code after a specified delay (measured in milliseconds)
+    //setTimeout(function, delay, [arg1, arg2, ...]); - function ko kabhi kabhi handler bhi bolte hai
+    /*setTimeout( function(){
+        console.log("using settimeout - hello after 2 second");
+    }, 2000)*/
+
+    //another way :-
+    const sayHello = function(){
+        console.log("Saying hello again after 2 sec");
+    }
+    setTimeout(sayHello, 2000) // passing sayhello by reference & not executing means () nhi laga rhe
+
+
+    //we can also pass arguments :-
+    function greet(name) {
+        console.log(`Hello, ${name}!`);
+    }
+    setTimeout(greet, 2000, 'Vivs'); // Hello, Vivs! after 2 secs. again note ki we are passing function by reference
+
+    // suppose we want to change h1 after certain interval 
+    const changeH1 = function(){
+        document.querySelector('h1').innerHTML = "3 sec me h1 change"
+    }
+    setTimeout(changeH1, 3000);
+
+
+    //now comes cleartimeout = it is used to cancel a timeout that was previously set using setTimeout.
+    // When you use setTimeout to schedule a function to run after a certain amount of time, it returns a unique identifier (a timer ID). This ID can be used with clearTimeout to prevent the scheduled function from running if certain conditions are met before the timeout expires.
+    // clearTimeout(timeoutID). basic eg -->
+    const timeoutID = setTimeout(function(){
+        console.log('this msg will not be logged');
+    }, 3000) // // Schedule a timeout to run after 3 seconds
+    clearTimeout(timeoutID); // Cancel the timeout before it has a chance to execute
+    console.log('timeout cleared');
+
+
+    //but humne upar jo kiya uska faayda kuch nhi hai.. generally cleartimeout kisi event pe lgate hai like lcik button, hover, keypress etc
+    const changeH2 = function(){
+        document.querySelector('h2').innerHTML = 'changed H2'
+        console.log('settimeout chal gya & H2 change ho gya');
+        //ek function bnaya jo ki h2 ko change krenga
+    }
+    const changeMe =  setTimeout(changeH2, 3000); //h2 change wala function 3 second baad chaleg
+    //leikn hum 3 second ke andar agr stop button click kr de to h2 chnage nhi hoga i.e setTimeOut execute nhi hoga & clearTimeout execute ho jaayga
+    document.querySelector('#stop').addEventListener('click', function(){
+        clearTimeout(changeMe)
+        console.log('setTimeOut stopped & H2 nhi hua change ');
+    })
+
+    //note - 
+    //  cleartimeout Only Works on Active Timeouts: clearTimeout has no effect if the timeout has already been executed.
+     // Does Not Work on Intervals: clearTimeout only cancels timeouts set with setTimeout. To cancel intervals set with setInterval, use clearInterval.
+    
+
+
+</script>
+</html>

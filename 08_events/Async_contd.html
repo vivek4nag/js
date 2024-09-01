@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>third file</title>
+</head>
+<body>
+    <h1>chai aur javascript</h1>
+    <button id = "start">Start</button>
+    <button id = "stop">Stop</button>
+</body>
+<script>
+    //setInterval method - used to repeatedly execute a specified function or code snippet at set intervals (in milliseconds). Unlike setTimeout, which only executes a function once after a specified delay, setInterval keeps running the function at the specified time intervals until it is explicitly stopped using clearInterval.
+    //setInterval(function, delay, [arg1, arg2, ...]); // args is optional- used to pass to function when executed
+    /*
+    const sayDate = function(str){
+        console.log(`hello ${str} Chai pii lo`,Date.now());
+    }
+    const intervalID =  setInterval(sayDate, 1000, "Vivs");
+    // ye continuously 1 sec bad baad chlta rehga bcz humne interval 1000 ms diya hai
+
+    clearInterval(intervalID) // ab ek bhi baar nhi chlega bcz bina kisi event ke aise hi directly clear kr rhe interval ko so setinterval kaam hi nhi krega*/
+
+
+    // So now we want ki start button dabate hi startInterval ho & stop krte hi stop
+    const sayDate = function(str){
+        console.log(`my name is ${str}`, Date.now());
+    }
+    let intervalID; // global variable bnana hai hence bahar declare kiya . ye neeche wale start ke nadar declare krte to stop ke andar wo accesible nhi hota
+    document.querySelector('#start').addEventListener('click', function(){
+        intervalID = setInterval(sayDate, 1000, "Jingalala hooo")
+    })
+
+    document.querySelector('#stop').addEventListener('click', function(){
+        clearInterval(intervalID);
+    })
+</script>
+</html>
