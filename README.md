@@ -13,3 +13,11 @@ Hey, I'm currently learning JavaScript, and it's been really exciting! I'm explo
 
 # 3. A digital Clock
 [click here](https://vivek4nag.github.io/js/07_basic_projects/03_DigitalClock/)
+
+# 4. Coming Soon 🥲
+
+# 5. KeyBoard Checker
+[click here](https://vivek4nag.github.io/js/07_basic_projects/05_keyboard/)
+
+# 6. Unlimited Colors
+[click here](https://vivek4nag.github.io/js/07_basic_projects/06_unlimitedColors/)
