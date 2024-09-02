@@ -37,12 +37,18 @@
 <script>
     // XML ajax request ke baare me bss knowledge chayhe thodi.. xyda kaam nhi aayga
     // XMLHttpRequest() ==> this object can be used to request data from a web server.
-    const requestURL = 'https://api.github.com/users/vivek4nag'
-    const xhr =  new XMLHttpRequest();
-    xhr.open('GET', requestURL)
+    // below code is basically uses XMLHttpRequest object to make an AJAX request to fetch data from a web server.
+    const requestURL = 'https://api.github.com/users/vivek4nag' // defines the URL of the API endpoint you want to fetch data from
+
+    const xhr =  new XMLHttpRequest(); // create a new XMLHttpRequest object (xhr). This object is used to send HTTP requests and receive responses from a web server.
+
+    xhr.open('GET', requestURL) //The open method initializes a new request. It takes two main parameters: 'GET' is used to fetch data & The URL to which the request is sent.
+
+    // The onreadystatechange property defines a function that will be called whenever the readyState of the xhr object changes. The readyState property holds the status of the XMLHttpRequest. the 5 values(0 1 2 3 4) defined above
     xhr.onreadystatechange = function(){
         console.log(xhr.readyState);
         if(xhr.readyState ===4){
+            // this.responseText==> This is a property that contains the response data as a string
             const data = JSON.parse(this.responseText) // string data recieve hua hai usko JSON me convert kr rhe
             console.log( typeof data);
             
@@ -50,7 +56,11 @@
             
         }   
     }
-    xhr.send()
+    xhr.send() // This line sends the request to the server. Once sent, the request will trigger the onreadystatechange event handler as the request's state changes.
+    
+    // basically what we did was ==> Define the API URL you want to request data from. ==> Create a new XMLHttpRequest object. ==> Initialize a request using the open method. ==> Define what should happen when the server's response is ready using onreadystatechange. == > end the request to the server with send().
+    // If everything goes well, you receive the data in JSON format, parse it, and log some of the data (like the number of followers) to the console.
+
 
 </script>
 </html>
