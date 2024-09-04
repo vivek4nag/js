@@ -147,7 +147,7 @@ consumePromiseFive() // This  function is called to execute the promise handling
 
 
 
-// abhi tk jo pdha uska use kahn & kaise hoga-- neeche dekho & next lecture me pata kgega
+// abhi tk jo pdha uska use kahn & kaise hoga-- neeche dekho & next lecture me pata lgega
 
 async function getAllUsers() {
     try {
