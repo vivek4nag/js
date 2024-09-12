@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Callbakcs</title>
+</head>
+<body style="background-color: #333;">
+    Hello Namaste
+    
+</body>
+<script>
+    // long running function
+    function waitThreeSeconds(){
+        let ms = 3000 + new Date().getTime()
+        while( new Date() < ms){}
+        console.log("finished function");
+        
+    }
+
+    // Function that will be executed when a click event occurs
+    function clickHandler(){
+        console.log("click event");
+        
+    }
+
+    // listen to click event( async event). the clickHandler will be executed only when the JS call stack is free
+    document.addEventListener('click', clickHandler);
+
+    waitThreeSeconds();
+    console.log("finished execution");
+
+    //      When the page loads, the waitThreeSeconds() function is called. This function uses a busy-wait loop to block the execution of any other code for 3 seconds. It keeps looping until the time has advanced by 3 seconds. Once the loop finishes, it logs "finished function" to the console.
+
+    //      Asynchronous Event Listener (addEventListener): Before waitThreeSeconds() is called, document.addEventListener('click', clickHandler) is registered to listen for click events. However, JavaScript is single-threaded, and while the waitThreeSeconds() function is running, no other code (like handling click events) can execute because the call stack is occupied.
+
+    //      Order of Execution: First, the click event listener is registered (but no event is fired yet). Then, waitThreeSeconds() runs and blocks the main thread for 3 seconds.  After waitThreeSeconds() finishes, "finished function" is logged. Finally, "finished execution" is logged after the function has completed . Only now is the call stack free to handle any events (like click events) that may have occurred during the blocking period.
+
+    //      Synchronous blocking - The waitThreeSeconds() function is synchronous and blocks the entire JavaScript thread. This means no other code (like handling clicks) can run until the function completes. During this time, the event listener for clicks is registered, but it cannot execute the clickHandler() function because JavaScript is busy with waitThreeSeconds()
+
+
+    // Asynchronous Callbacks: The click event listener is an example of an asynchronous callback.Even though the event listener is registered, the callback (clickHandler) can only be executed once the JavaScript call stack is free. If you were to click the page while waitThreeSeconds() is running, the clickHandler() wouldn't execute until the blocking function is done.
+
+    </script>
+</html>
