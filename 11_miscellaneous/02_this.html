@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this</title>
+</head>
+<body>
+    just to understand this keyword
+</body>
+<script>
+    // function x () {
+    //     console.log(this);
+    //     function y (){
+    //         console.log(this);
+    //         function z (){
+    //             console.log(this);
+                
+    //         }
+    //         z()
+    //     }
+    //     y()
+        
+    // }
+    // x()
+
+    const obj = {
+        firstname: "vivek",
+        printName: () => {
+            console.log(this.firstname); // op undefined
+            
+        },
+        printName2: function () {
+            console.log(this.firstname); // op vivek
+            
+        }
+    }
+
+    obj.printName(); // op undefined ==> Arrow functions do not have their own this binding. Instead, they inherit this from their lexical scope (the surrounding context where the arrow function is defined). In this case, the surrounding context is the global scope, not the obj object. Therefore, this inside the arrow function refers to the global this (which is window in browsers). Since the global object (window) doesn’t have a firstname property, it prints undefined.
+
+    obj.printName2(); // In regular functions, this refers to the object that called the function. In this case, printName2 is called as a method of obj, so this refers to the obj object.
+
+</script>
+</html>
