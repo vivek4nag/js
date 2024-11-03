@@ -32,6 +32,7 @@ c()
 // x() // error --> x is not defined
 
 
+
 /*first class function or first class citizens ==> concept where functions are treated as values. This means that functions can be:
 1. Assigned to variables.
 2. Passed as arguments to other functions.
